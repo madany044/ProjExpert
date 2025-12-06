@@ -10,6 +10,7 @@ import Tasks from './pages/Tasks';
 import TaskView from './pages/TaskView';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
+import Login from './pages/Login';
 import Header from './components/Header';
 import ToastProvider from './components/ToastProvider';
 import ConfirmProvider from './components/ConfirmProvider';
@@ -48,6 +49,7 @@ const App = () => {
           <main className="p-6">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/tasks/:id" element={<TaskView />} />

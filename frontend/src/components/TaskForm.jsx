@@ -12,7 +12,7 @@ const TaskForm = ({ initial = {}, onSubmit, submitText = 'Save' }) => {
   const [attachments, setAttachments] = useState(initial.attachments || []);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef();
-  const toast = useToast();
+  const { push: toast } = useToast();
   const confirm = useConfirm();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const TaskForm = ({ initial = {}, onSubmit, submitText = 'Save' }) => {
     setTags((initial.tags || []).join(', '));
     const initAtt = (initial.attachments || []).map(a => ({ id: a.public_id || a.url || a.filename || (Date.now()+Math.random()), ...a }));
     setAttachments(initAtt);
-  }, [initial]);
+  }, [initial.title, initial.description, initial.priority, initial.tags, initial.attachments]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

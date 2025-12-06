@@ -2,5 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom app styles */
-body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+/* Base styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-gradient-to-br from-dark-bg to-dark-card text-gray-100 font-sans;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
+  h1 { @apply text-3xl font-bold text-white; }
+  h2 { @apply text-2xl font-bold text-white; }
+  h3 { @apply text-xl font-semibold text-gray-100; }
+  h4 { @apply text-lg font-semibold text-gray-200; }
+  p { @apply text-gray-300; }
+  a { @apply text-proj-blue hover:text-proj-purple transition-colors; }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-gradient-p text-white font-semibold rounded-lg hover:shadow-glow transition-all active:scale-95;
+  }
+  .btn-secondary {
+    @apply px-4 py-2 bg-dark-card border border-gray-600 text-gray-100 font-semibold rounded-lg hover:bg-dark-hover transition-all;
+  }
+  .btn-danger {
+    @apply px-4 py-2 bg-error text-white font-semibold rounded-lg hover:bg-red-600 transition-all active:scale-95;
+  }
+  .card {
+    @apply bg-dark-card border border-gray-700 rounded-lg p-6 shadow-glass;
+  }
+  .card-hover {
+    @apply card hover:border-proj-purple hover:shadow-glow transition-all;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-dark-input border border-gray-600 text-gray-100 rounded-lg focus:outline-none focus:border-proj-blue focus:ring-2 focus:ring-proj-blue/30 transition-all;
+  }
+  .input-field::placeholder {
+    @apply text-gray-500;
+  }
+  .label {
+    @apply block text-sm font-semibold text-gray-300 mb-2;
+  }
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: blur(12px);
+    background-color: rgb(255 255 255 / 0.1);
+    border: 1px solid rgb(255 255 255 / 0.2);
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(to right, #6A5AE0, #3A8DFF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

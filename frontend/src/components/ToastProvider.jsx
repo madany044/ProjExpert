@@ -26,19 +26,35 @@ const ToastProvider = ({ children }) => {
 
   const remove = useCallback((id) => setToasts(t => t.filter(x => x.id !== id)), []);
 
+  const getToastClasses = (type) => {
+    const baseClasses = 'max-w-sm p-4 rounded-lg shadow-lg border text-gray-100 font-medium';
+    switch(type) {
+      case 'error':
+        return `${baseClasses} bg-red-600 border-red-500`;
+      case 'success':
+        return `${baseClasses} bg-green-600 border-green-500`;
+      case 'warning':
+        return `${baseClasses} bg-amber-600 border-amber-500`;
+      case 'info':
+      default:
+        return `${baseClasses} bg-blue-600 border-blue-500`;
+    }
+  };
+
   return (
     <ToastContext.Provider value={{ push, remove }}>
       {children}
-      <div className="fixed bottom-6 right-6 space-y-2 z-50">
+      <div className="fixed bottom-6 right-6 space-y-3 z-50 pointer-events-none">
         {toasts.map(t => (
           <div
             key={t.id}
             style={{
               transition: 'transform 220ms cubic-bezier(.2,.8,.2,1), opacity 220ms',
-              transform: t.show ? 'translateY(0)' : 'translateY(8px)',
-              opacity: t.show ? 1 : 0
+              transform: t.show ? 'translateY(0)' : 'translateY(12px)',
+              opacity: t.show ? 1 : 0,
+              pointerEvents: t.show ? 'auto' : 'none'
             }}
-            className={`max-w-sm p-3 rounded shadow-lg ${t.type==='error'? 'bg-red-600' : 'bg-gray-900/80'}`}>
+            className={getToastClasses(t.type)}>
             <div className="text-sm">{t.message}</div>
           </div>
         ))}
