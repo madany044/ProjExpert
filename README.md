@@ -1,15 +1,15 @@
 # ProjXpert - Student Project Platform
 Full-stack MERN app built for college students to manage projects easily:
 
-✅ Submit tasks & attach files (Cloudinary storage)
+✅ Submit tasks & attach files 
 
 ✅ Admin dashboard with analytics
 
-✅ AI assistant (OpenAI-powered)
-
 ✅ Google OAuth login
 
-✅ Secure sessions (httpOnly cookies)
+✅ Real-time progress tracking
+
+✅ Multi-platform deployment (Render/Netlify)
 
 ## 📢 Live Demo 
 https://proj-expert-mauve.vercel.app/
