@@ -11,6 +11,9 @@ Full-stack MERN app built for college students to manage projects easily:
 
 ✅ Secure sessions (httpOnly cookies)
 
+## 📢 Live Demo 
+https://proj-expert-mauve.vercel.app/
+
 ## Tech Stack:
 
 #### Frontend: 
@@ -45,9 +48,15 @@ cd backend
 npm test
 ```
 
-Deployment
+#### Deployment
 See `DEPLOYMENT.md` for deployment instructions to Vercel (frontend) and Render (backend), and configuration for MongoDB Atlas and Cloudinary.
 
-Credits
-- Built with Node.js, Express, MongoDB, React, Redux, Tailwind, Cloudinary.
+<div align="center">
+  
+## Designed & Developed By 
+[ MADAN Y ]
+
+ **Email**: madanmadany2004@gmail.com 
+
+</div>
 
