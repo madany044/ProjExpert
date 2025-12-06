@@ -1,5 +1,10 @@
 # ProjXpert - Student Project Platform
-Full-stack MERN app built for college students to manage projects easily:
+
+### 📢 Live Demo 
+
+https://proj-expert-mauve.vercel.app/
+
+#### Full-stack MERN app built for college students to manage projects easily:
 
 ✅ Submit tasks & attach files 
 
@@ -10,9 +15,6 @@ Full-stack MERN app built for college students to manage projects easily:
 ✅ Real-time progress tracking
 
 ✅ Multi-platform deployment (Render/Netlify)
-
-## 📢 Live Demo 
-https://proj-expert-mauve.vercel.app/
 
 ## Tech Stack:
 
