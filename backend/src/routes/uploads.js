@@ -16,4 +16,17 @@ router.post('/', authenticateJWT, strictLimiter, upload.single('file'), uploadFi
 // Protected delete endpoint
 router.delete('/', authenticateJWT, strictLimiter, deleteFile);
 
+// Test/debug endpoint (for development only, bypasses Cloudinary)
+if (process.env.NODE_ENV === 'development') {
+  router.post('/test', authenticateJWT, upload.single('file'), (req, res) => {
+    if (!req.file) return res.status(400).json({ message: 'No file' });
+    res.json({
+      url: `https://via.placeholder.com/200?text=${encodeURIComponent(req.file.originalname)}`,
+      filename: req.file.originalname,
+      mimeType: req.file.mimetype,
+      public_id: `test/${Date.now()}`
+    });
+  });
+}
+
 module.exports = router;
