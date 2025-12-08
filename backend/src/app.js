@@ -34,7 +34,25 @@ app.use(
 	})
 );
 
-app.use(cors({ origin: FRONTEND, credentials: true }));
+app.use(cors({ 
+  origin: (origin, callback) => {
+    // Allow localhost for development, Vercel for production, or if no origin
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'http://localhost:5000',
+      process.env.FRONTEND_URL,
+      'https://proj-expert-mauve.vercel.app',
+      'https://proj-expert-git-main-madans-projects-061a6083.vercel.app'
+    ].filter(Boolean);
+    
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed'));
+    }
+  },
+  credentials: true 
+}));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
