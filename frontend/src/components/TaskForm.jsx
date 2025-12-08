@@ -46,6 +46,16 @@ const TaskForm = ({ initial = {}, onSubmit, submitText = 'Save' }) => {
   const addFiles = async (files) => {
     const list = Array.from(files || []);
     if (!list.length) return;
+    
+    // Validate file types - only images allowed
+    const validImages = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    const invalidFiles = list.filter(f => !validImages.includes(f.type));
+    
+    if (invalidFiles.length > 0) {
+      toast('Only image files (JPEG, PNG, GIF, WebP) are allowed', { type: 'warning' });
+      return;
+    }
+
     setUploading(true);
     for (const file of list) {
       // optimistic local entry while uploading
@@ -59,8 +69,10 @@ const TaskForm = ({ initial = {}, onSubmit, submitText = 'Save' }) => {
         });
         // replace local entry with returned data
         setAttachments(prev => prev.map(a => (a.id === local.id ? { ...a, url: data.url, filename: data.filename || a.filename, mimeType: data.mimeType || a.mimeType, public_id: data.public_id, progress: 100 } : a)));
+        toast('Image uploaded successfully', { type: 'success' });
       } catch (err) {
         console.error('Upload failed', err);
+        toast(`Upload failed: ${err.message}`, { type: 'error' });
         setAttachments(prev => prev.map(a => (a.id === local.id ? { ...a, error: true } : a)));
       }
     }
@@ -98,7 +110,7 @@ const TaskForm = ({ initial = {}, onSubmit, submitText = 'Save' }) => {
             <button type="button" onClick={() => fileInputRef.current.click()} className="text-sm underline">Add files</button>
           </div>
         </div>
-        <input ref={fileInputRef} type="file" multiple onChange={handleFileSelect} className="hidden" />
+        <input ref={fileInputRef} type="file" multiple accept="image/jpeg,image/png,image/gif,image/webp" onChange={handleFileSelect} className="hidden" />
         <div className="mt-2 grid grid-cols-3 gap-2">
           {attachments.map(att => (
             <div key={att.id || att.public_id || att.filename} className="p-2 bg-white/5 rounded relative">

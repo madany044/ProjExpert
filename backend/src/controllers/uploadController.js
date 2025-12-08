@@ -13,16 +13,15 @@ const uploadFile = async (req, res) => {
 
     console.log(`Uploading ${filename} (${mimeType}, ${buffer.length} bytes) to Cloudinary...`);
 
-    // Server-side MIME whitelist
+    // Server-side MIME whitelist - only image files for Cloudinary
     const ALLOWED_MIMES = [
-      'image/jpeg', 'image/png', 'image/gif', 'image/webp',
-      'application/pdf',
-      'application/zip', 'application/x-zip-compressed',
-      'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      'text/plain'
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp'
     ];
     if (!ALLOWED_MIMES.includes(mimeType)) {
-      return res.status(400).json({ message: 'File type not allowed' });
+      return res.status(400).json({ message: 'Only image files (JPEG, PNG, GIF, WebP) are allowed' });
     }
 
     let responded = false;
