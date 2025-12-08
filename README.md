@@ -1,15 +1,20 @@
 # ProjXpert - Student Project Platform
-Full-stack MERN app built for college students to manage projects easily:
 
-✅ Submit tasks & attach files (Cloudinary storage)
+### 📢 Live Demo 
+
+https://proj-expert-mauve.vercel.app/
+
+#### Full-stack MERN app built for college students to manage projects easily:
+
+✅ Submit tasks & attach files 
 
 ✅ Admin dashboard with analytics
 
-✅ AI assistant (OpenAI-powered)
-
 ✅ Google OAuth login
 
-✅ Secure sessions (httpOnly cookies)
+✅ Real-time progress tracking
+
+✅ Multi-platform deployment (Render/Netlify)
 
 ## Tech Stack:
 
@@ -45,9 +50,15 @@ cd backend
 npm test
 ```
 
-Deployment
+#### Deployment
 See `DEPLOYMENT.md` for deployment instructions to Vercel (frontend) and Render (backend), and configuration for MongoDB Atlas and Cloudinary.
 
-Credits
-- Built with Node.js, Express, MongoDB, React, Redux, Tailwind, Cloudinary.
+<div align="center">
+  
+## Designed & Developed By 
+[ MADAN Y ]
+
+ **Email**: madanmadany2004@gmail.com 
+
+</div>
 

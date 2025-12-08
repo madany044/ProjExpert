@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://projexpert-backend-u8e7.onrender.com/:path*"
+      "destination": "https://projexpert-backend-u8e7.onrender.com/api/:path*"
     },
     {
       "source": "/(.*)",
